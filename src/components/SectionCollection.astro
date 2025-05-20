@@ -1,0 +1,15 @@
+---
+import Section from "./Section.astro";
+import { type SectionInfo } from '../data/sectionData'
+
+const { sections } = Astro.props;
+---
+
+{sections.map((section : SectionInfo, index : number) => {
+    const Content = section.Content;
+    return (    
+      <Section id={section.id} title={section.title} bg={section.background} textColor={section.textColor}>
+        <Content />
+      </Section>
+    );
+  })}

@@ -1,0 +1,115 @@
+---
+
+import Header from "./Header.astro";
+import Hero from "./Hero.astro";
+import Section from "./Section.astro";
+import { getCollection, render } from 'astro:content';
+
+const links2 = [
+	{ href: '#membership', text: 'Membership', title: 'Membership' },
+	{ href: '/pool-rules', text: 'Pool Rules', title: 'Pool Rules' },
+	{ href: '#contact', text: 'Contact Us', title: 'Contact Us' },
+	{ href: '#swimTeam', text: 'Swim Team', title: 'Swim Team' },
+	{ href: '#hours', text: 'Pool Hours', title: 'Pool Hours' },
+  { href: '#schedule', text: 'Event Calendar', title: 'Event Calendar' }
+];
+
+const pageTitle = 'Arden Swim Club';
+
+
+const backgrounds = [
+  'bg-teal-200',
+  'bg-teal-300',
+  'bg-teal-400'
+];
+
+const sections  = await getCollection('landingPageSections');
+
+async function processCollection() {
+  
+  return sections.map(async (section, index) => {
+    const { Content, headings } = await render(section);
+    const data = section.data;
+    const background=backgrounds[index % backgrounds.length];  
+    // <Section id={section.id} title={data.title} {bg} textColor={data.textColor}></Section>
+    return {
+      Content, 
+      headings, 
+      data, 
+      background,
+      id: section.id,
+      title: data.title,
+      textColor: data.textColor
+    };
+  });
+
+}
+//const sectionData = await processCollection();
+
+
+const sectionData = await Promise.all(
+  sections.map(async (section, index) => {
+    const { Content, headings } = await render(section);
+    const data = section.data;
+    const background = backgrounds[index % backgrounds.length];
+
+    return {
+      Content,
+      headings,
+      data,
+      background,
+      id: section.id,
+      title: data.title,
+      textColor: data.textColor,
+    };
+  })
+);
+
+
+const links = sectionData.map(s => {
+  return { href: `#${s.id}`, title: s.title };
+});
+
+//const links = 
+
+// sections.map(async (entry) => {
+//   const { Content, headings } = await render(entry);
+// })
+console.log(links);
+---
+
+<div class="h-screen flex flex-col">
+  <Header {links} {pageTitle}/>
+  <Hero />
+</div>
+
+{sectionData.map(async (section, index) => {
+  const Content = (await section).Content;
+  return (    
+    <Section id={section.id} title={section.title} bg={section.background} textColor={section.textColor}>
+      <Content />
+    </Section>
+  );
+})}
+
+<!-- 
+{sections.map(async ({ id, data, slug, render }) => {
+  const Content = await render();
+  return (
+    <Section id={data.id} title={data.title} bg={data.bg} textColor={data.textColor}>
+      <Content />
+    </Section>
+  );
+})} -->
+
+<!-- 
+<Section id="about" title="About Us" bg="bg-green-400">
+  This section is where you'd describe what your site or organization is all about.
+</Section>
+<Section id="services" title="Our Services" bg="bg-blue-400">
+  List your services here.
+</Section>
+<Section id="contact" title="Contact" bg="bg-green-400">
+  How to reach you.
+</Section> -->
+

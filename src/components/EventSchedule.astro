@@ -1,0 +1,81 @@
+---
+interface Props {
+  header: [string, string];
+  events: [string, string][];
+  dateFormat?: string;
+}
+
+const { header, events, dateFormat = 'MMM d, yyyy' } = Astro.props;
+
+function parseDate(raw: string): Date {
+  const [month, day, year] = raw.split('-').map(Number);
+  return new Date(year, month - 1, day);
+}
+
+function formatDate(date: Date): string {
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: dateFormat.includes('MMMM') ? 'long' : 'short',
+    day: 'numeric',
+  });
+  return formatter.format(date);
+}
+
+function generateICS(date: Date, title: string): string {
+  const pad = (n: number) => String(n).padStart(2, '0');
+
+  const y = date.getFullYear();
+  const m = pad(date.getMonth() + 1);
+  const d = pad(date.getDate());
+
+  const start = `${y}${m}${d}T160000Z`;
+  const end = `${y}${m}${d}T180000Z`;
+
+  const ics = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "BEGIN:VEVENT",
+    `DTSTART:${start}`,
+    `DTEND:${end}`,
+    `SUMMARY:${title}`,
+    "LOCATION:Arden Swim Club",
+    "DESCRIPTION:Event at Arden Swim Club",
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ].join("\r\n");
+
+  return `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`;
+}
+
+const today = new Date();
+const upcoming = events
+  .map(([rawDate, title]) => ({ rawDate, title, date: parseDate(rawDate) }))
+  .filter(({ date }) => date >= new Date(today.toDateString())) // strip time
+  .sort((a, b) => a.date.getTime() - b.date.getTime());
+---
+<table class="w-full border-collapse text-left my-8 shadow-sm">
+  <thead>
+    <tr class="bg-green-100 text-green-900 uppercase text-sm tracking-wide">
+      <th class="py-3 px-4 border-b border-green-300">📅 {header[0]}</th>
+      <th class="py-3 px-4 border-b border-green-300">📍 {header[1]}</th>
+      <th class="py-3 px-4 border-b border-green-300">📥 Add</th>
+    </tr>
+  </thead>
+  <tbody>
+    {upcoming.map(({ rawDate, title, date }, i) => (
+      <tr class={i % 2 === 0 ? 'bg-white' : 'bg-green-50'}>
+        <td class="py-2 px-4 border-b border-green-200 font-mono whitespace-nowrap">{formatDate(date)}</td>
+        <td class="py-2 px-4 border-b border-green-200">{title}</td>
+        <td class="py-2 px-4 border-b border-green-200">
+          <a
+            href={generateICS(date, title)}
+            download={`${rawDate.replace(/-/g, '')}-${title.replace(/\s+/g, '-')}.ics`}
+            class="text-sm text-blue-600 underline"
+          >
+            .ics
+          </a>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>

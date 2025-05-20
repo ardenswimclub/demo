@@ -1,0 +1,46 @@
+---
+import background from '../assets/pool-watercolor.png';
+import logo from '../assets/arden-swim-club-logo.png';
+---
+
+<section class="h-screen flex flex-col justify-start pt-32 w-full bg-no-repeat bg-cover bg-bottom" 
+style={`background-image: url('${background.src}');`}  >
+
+<div class="max-w-5xl mt-10 mx-auto px-6 py-4 bg-gray-300/80 rounded text-black flex flex-col md:flex-row items-center gap-8">
+  <!-- Logo on the left -->
+  <img
+    src={logo.src}
+    alt="Arden Swim Club logo"
+    class="w-60 h-60 object-contain"
+  />
+
+  <!-- Text content on the right -->
+  <div>
+    <h1 class="text-2xl font-bold mb-0">Welcome to Arden Swim Club</h1>
+
+    <!-- Our tranquil, wooded oasis is located off of Harvey Road in North Wilmington. -->
+
+    <p class="mb-4">A hidden oasis in the trees. Conveniently located in North Wilmington off Harvey Road.</p>
+    
+    <h2 class="text-l font-bold mb-0">Join a place where friendships grow and summer memories are made:</h1>
+    <ul>            
+      <li>No bonds</li>
+      <li>No joiner fees</li>
+      <li>No maintenance fees</li>
+      <li>Budget-friendly memberships</li>
+      <li>Open to all — no waitlist!</li>
+    </ul>
+    
+
+    <a href="#about" class="text-yellow-300 underline">Learn More ↓</a>
+  </div>
+</div>
+
+
+  <!-- <div class="max-w-2xl mx-auto px-6 py-8 bg-white bg-opacity-70 rounded text-green-900 shadow-lg">
+    <h1 class="text-4xl font-bold mb-4">Welcome to My Awesome Site</h1>
+    <p class="mb-4">This is your call to action. Click below to learn more.</p>
+    <a href="#about" class="text-blue-800 underline font-semibold">Learn More ↓</a>
+  </div> -->
+</section>
+

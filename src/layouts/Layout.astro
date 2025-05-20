@@ -1,0 +1,33 @@
+---
+import './src/styles/global.css' 
+
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+import { sections , links } from '../data/sectionData';
+
+const pageTitle = 'Arden Swim Club';
+
+export interface Props {
+  title?: string;
+  frontmatter?: any;
+}
+
+
+const { frontmatter = null } = Astro.props; 
+
+const title = Astro.props.title || frontmatter.title;
+
+---
+
+<BaseLayout {title}>
+    <Header {links} {pageTitle}/>
+    
+    <main class="prose-xl prose-slate mt-16 px-4 max-w-3xl mx-auto bg-gray-200 mb-16">
+      <h1>{title}</h1>
+      <slot />
+    </main>
+
+    <Footer />
+</BaseLayout>

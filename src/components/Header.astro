@@ -1,0 +1,14 @@
+---
+const { pageTitle, links } = Astro.props;
+---
+
+<header class="h-20 px-8 flex justify-between items-center bg-[#f0f5ec] text-green-900 shadow-md">
+  <div class="text-xl font-bold">
+    <a href="/">{pageTitle}</a>
+  </div>
+  <nav class="space-x-6">
+    {links.map((link: { href: string; title: string; }) => (
+      <a href={link.href} title={link.title} class="hover:text-green-700 font-medium">{link.title}</a>
+    ))}
+  </nav>
+</header>

@@ -1,0 +1,140 @@
+---
+interface Props {
+  calendarData: string;
+  replacements?: object;
+}
+
+const { calendarData, replacements } = Astro.props;
+
+interface Entry {
+  startDate: string;
+  endDate: string;
+  startTime: string;
+  endTime: string;
+  memo: string;
+  memo2: string;
+}
+
+// 📅 Helpers
+function parseTSV(data: string): Entry[] {
+  return data.trim().split('\n').map(line => {
+    const [startDate, endDate, startTime, endTime, memo, memo2] = line.split('\t');
+    return { startDate, endDate, startTime, endTime, memo, memo2 };
+  });
+}
+
+function splitEntryByMonth(entry: Entry): Entry[] {
+  const result: Entry[] = [];
+  const start = new Date(entry.startDate);
+  const end = new Date(entry.endDate);
+
+  let current = new Date(start);
+  while (current <= end) {
+    const month = current.getMonth();
+    const year = current.getFullYear();
+
+    const monthEnd = new Date(year, month + 1, 0);
+    const subStart = new Date(Math.max(current.getTime(), start.getTime()));
+    const subEnd = new Date(Math.min(monthEnd.getTime(), end.getTime()));
+
+    var r = {
+      startDate: subStart.toISOString().split('T')[0] + `T00:00:00`,
+      endDate: subEnd.toISOString().split('T')[0] + `T00:00:00`,
+      startTime: entry.startTime,
+      endTime: entry.endTime,
+      memo: entry.memo,
+      memo2: entry.memo2
+    }
+  
+    result.push(r);
+
+    // Move to first of next month
+    current = new Date(year, month + 1, 1);
+  }
+
+  return result;
+}
+
+function formatDateList(start: Date, end: Date): string {
+  const msPerDay = 1000 * 60 * 60 * 24;
+  const numDays = Math.round((end.getTime() - start.getTime()) / msPerDay) + 1;
+
+  if (numDays <= 4) {
+    const dates = [];
+    for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+      dates.push(
+        d.toLocaleDateString('en-US', { weekday: 'short', month: 'long', day: 'numeric' })
+      );
+    }
+    return dates.join('<br/>');
+  } else {
+    return `${start.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })} - ${end.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}`;
+  }
+}
+
+function formatTimeRange(start: string, end: string): string {  
+
+  if(!start.includes(':'))
+    return 'CLOSED';
+
+  const [startH] = start.split(':');  
+  const [endH] = end.split(':');
+  
+  return `${startH} - ${endH} pm`;
+}
+
+// 🔧 Parse + transform
+const rawEntries = parseTSV(calendarData);
+const splitEntries = rawEntries.flatMap(splitEntryByMonth);
+
+// Group by month
+const calendar = new Map<string, Entry[]>();
+
+for (const entry of splitEntries) {
+  const date = new Date(entry.startDate);
+  const month = date.toLocaleDateString('en-US', { month: 'long' });
+
+  if (!calendar.has(month)) {
+    calendar.set(month, []);
+  }
+  calendar.get(month)?.push(entry);
+}
+
+function formatMemo(memo? : string | undefined) {  
+  return memo ? `<h4 class="font-semibold">${memo}</h4>` : '';
+}
+
+/**
+ * Parses a YYYY-MM-DD string into a Date interpreted as local time.
+ */
+ export function parseLocalDate(dateStr: string): Date {
+  const [year, month, day] = dateStr.split('-').map(Number);
+  return new Date(year, month - 1, day); // month is 0-based
+}
+
+---
+<div class="space-y-8">
+  {Array.from(calendar.entries()).map(([month, entries]) => (
+    <h1 class="text-5xl font-bold mb-2 text-center mb-5">{month}</h3>
+    <section class="bg-yellow-200">      
+      <div class="space-y-6">
+        {entries.map(entry => {
+          const start = new Date(entry.startDate);
+          const end = new Date(entry.endDate);
+          return (
+            <div class="grid grid-cols-2 gap-4 pb-4 bg-green-200">
+              <div>
+                <div class="text-xl" set:html={formatMemo(entry.memo)}></div>
+                <div class="text-xl" set:html={formatDateList(start, end)}></div>
+              </div>
+              <div class="">
+                <div class="text-3xl" set:html={formatTimeRange(entry.startTime, entry.endTime)}></div>
+                <div class="text-xl" set:html={entry.memo2}></div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  ))}
+</div>

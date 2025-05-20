@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+    --link-color: oklch(64.8% 0.2 131.684);
+    --hover-link-color: oklch(53.2% 0.157 131.589);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration-line: none;
+}
+
+a:hover {
+    color: var(--hover-link-color);
+}

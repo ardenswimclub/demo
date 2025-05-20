@@ -1,0 +1,16 @@
+---
+import Calendar from '../components/Calendar.astro';
+import Layout from '../layouts/Layout.astro';
+import hoursText from  '../data/hours.txt?raw';
+
+const parking = `
+<br/>
+⚠️ POOL PARKING LOT CLOSED ⚠️<br/>
+<a href="./arden-fair-parking" class="underline text-lime-600 hover:text-lime-700">Shuttle information</a>`.replaceAll('\n','');
+
+const calendarData = hoursText.replace('{parking}', parking);
+---
+
+<Layout title="Hours">
+<Calendar calendarData={calendarData} />
+</Layout>

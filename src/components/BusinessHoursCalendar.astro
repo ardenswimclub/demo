@@ -1,0 +1,101 @@
+---
+interface HoursEntry {
+  startDate: string;
+  endDate: string;
+  startTime: string;
+  endTime: string;
+  dateMemo?: string;
+  timeMemo?: string;
+}
+
+interface Props {
+  entries: HoursEntry[];
+}
+
+const { entries } = Astro.props;
+
+// Time blocks from 11 AM to 8 PM (inclusive)
+const TIME_BLOCKS = Array.from({ length: 10 }, (_, i) => {
+  const hour = 11 + i;
+  const label = `${hour > 12 ? hour - 12 : hour}:00${hour >= 12 ? 'PM' : 'AM'}`;
+  return { hour, label, minutes: hour * 60 };
+});
+
+function parseTimeToMinutes(timeStr: string): number {
+  const [_, h, m, suffix] = timeStr.match(/(\d+):(\d+)(AM|PM)/i) || [];
+  let hours = parseInt(h);
+  const minutes = parseInt(m);
+  if (suffix.toUpperCase() === 'PM' && hours < 12) hours += 12;
+  if (suffix.toUpperCase() === 'AM' && hours === 12) hours = 0;
+  return hours * 60 + minutes;
+}
+
+function dateRange(start: string, end: string): string[] {
+  const result = [];
+  let current = new Date(start);
+  const last = new Date(end);
+  while (current <= last) {
+    result.push(current.toISOString().split('T')[0]);
+    current.setDate(current.getDate() + 1);
+  }
+  return result;
+}
+
+const allDates = new Set<string>();
+const dailyMap = new Map<string, { openMin: number, closeMin: number, dateMemo?: string, timeMemo?: string }>();
+
+for (const entry of entries) {
+  for (const day of dateRange(entry.startDate, entry.endDate)) {
+    allDates.add(day);
+    dailyMap.set(day, {
+      openMin: parseTimeToMinutes(entry.startTime),
+      closeMin: parseTimeToMinutes(entry.endTime),
+      dateMemo: entry.dateMemo,
+      timeMemo: entry.timeMemo,
+    });
+  }
+}
+
+const sortedDates = Array.from(allDates).sort();
+---
+
+<table class="w-full border text-sm mt-6 text-center table-fixed">
+  <thead class="bg-gray-100 text-gray-700">
+    <tr>
+      <th class="px-2 py-1 w-1/12">Date</th>
+      {TIME_BLOCKS.map(block => (
+        <th class="px-2 py-1 w-1/12">{block.label}</th>
+      ))}
+    </tr>
+  </thead>
+  <tbody>
+    {sortedDates.map(date => {
+      const entry = dailyMap.get(date);
+      const openMin = entry?.openMin ?? -1;
+      const closeMin = entry?.closeMin ?? -1;
+      const dateObj = new Date(date);
+      const dateLabel = dateObj.toLocaleDateString('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: '2-digit',
+      });
+
+      return (
+        <tr>
+          <td class="px-2 py-1 font-medium truncate" title={entry?.dateMemo ?? ""}>
+            {dateLabel}
+          </td>
+          {TIME_BLOCKS.map(({ minutes }) => {
+            const isOpen = minutes >= openMin && minutes < closeMin;
+            return (
+              <td
+                class={`h-6 border ${isOpen ? 'bg-blue-500' : 'bg-white'}`}
+                title={isOpen && entry?.timeMemo ? entry.timeMemo : ''}
+              ></td>
+            );
+          })}
+        </tr>
+      );
+    })}
+  </tbody>
+</table>
