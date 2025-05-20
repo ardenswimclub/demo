@@ -1,6 +1,7 @@
 ---
 import background from '../assets/pool-watercolor.png';
 import logo from '../assets/arden-swim-club-logo.png';
+import { withBase } from '../util/url';
 ---
 
 <section class="h-screen flex flex-col justify-start pt-32 w-full bg-no-repeat bg-cover bg-bottom" 
@@ -32,7 +33,7 @@ style={`background-image: url('${background.src}');`}  >
     </ul>
     
 
-    <a href="#about" class="text-yellow-300 underline">Learn More ↓</a>
+    <a href={withBase('#about')} class="text-yellow-300 underline">Learn More ↓</a>
   </div>
 </div>
 
