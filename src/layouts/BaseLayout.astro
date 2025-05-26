@@ -1,32 +1,109 @@
----                               
-import '/src/styles/global.css' 
+---
+import { SEO } from "astro-seo";
+import Footer from "@/components/footer.astro";
+import Navbar from "@/components/navbar/navbar.astro";
+import Container from "@/components/container.astro";
+
+import "@fontsource-variable/inter/index.css";
+import "@fontsource-variable/bricolage-grotesque";
+import "@/styles/global.css";
+//import { undefined } from "astro:schema";
+import { menus } from '../data/menus';
+import { withBase } from "@/utils/url";
+
+
 export interface Props {
-  title?: string;
+  title: string;
+  markdown?: boolean | undefined;
+  noContainer?: boolean | undefined;
+  menu: string;
+  subtitle?: string | undefined;
 }
 
-const { title = '' } = Astro.props;
-const pageTitle = title.length ? `Arden Swim Club - ${title}` : 'Arden Swim Club';
---- 
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const resolvedImageWithDomain = new URL(
+  "/opengraph.jpg",
+  Astro.site
+).toString();
+
+const { title, markdown, noContainer, menu, subtitle } = Astro.props;
+
+const menuItems = menus[menu];
+
+const makeTitle = title
+  ? title + " | " + "Arden Swim Club"
+  : "Arden Swim Club";
+
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
-		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😎</text></svg>">
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body class="bg-gray-300">
-		<slot />
-	</body>
-</html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦈</text></svg>">
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+    <link rel="apple-touch-icon" sizes="180x180" href={withBase('/favicon/apple-touch-icon.png')}>
+    <link rel="icon" type="image/png" sizes="32x32" href={withBase('/favicon/favicon-32x32.png')}>
+    <link rel="icon" type="image/png" sizes="16x16" href={withBase('/favicon/favicon-16x16.png')}>
+    <link rel="manifest" href={withBase('/favicon/site.webmanifest')}>
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+    <SEO
+      title={makeTitle}
+      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      canonical={canonicalURL}
+      twitter={{
+        creator: "@surjithctly",
+        site: "@web3templates",
+        card: "summary_large_image",
+      }}
+      openGraph={{
+        basic: {
+          url: canonicalURL,
+          type: "website",
+          title: `Astroship - Starter Template for Astro`,
+          image: resolvedImageWithDomain,
+        },
+        image: {
+          alt: "Astroship Homepage Screenshot",
+        },
+      }}
+    />
+
+    <script>
+      // const header = document.getElementById('site-header');
+      // let lastScrollY = window.scrollY;
+    
+      // window.addEventListener('scroll', () => {
+      //   const scrollingDown = window.scrollY > (lastScrollY - 100) && window.scrollY > 200;
+      //   header?.classList.toggle('py-0', scrollingDown);
+      //   header?.classList.toggle('py-4', !scrollingDown);
+      //   lastScrollY = window.scrollY;
+      // });
+    </script>
+
+    <script type="module" src={withBase('/js/todays-hours.js')}></script>
+  
+    
+  </head>
+  <body>
+    <Navbar {menuItems} {subtitle}/>
+    <!-- container moved to child layouts -->
+    <Container {noContainer} class={markdown ? 'prose prose-tight pt-16 pb-8 md:pt-12 md:pb-24' : ''}>
+      
+    <slot />
+    </Container>
+    <Footer />
+    <style is:global>
+      /* Improve Page speed */
+      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
+</html>

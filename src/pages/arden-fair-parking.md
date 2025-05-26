@@ -1,6 +1,7 @@
 ---
-layout: ../layouts/Layout.astro
+layout: ../layouts/MarkdownLayout.astro
 title: Arden Fair Parking
+menu: main
 ---
 
 **The Arden Fair** is a beloved annual tradition held on the Saturday of Labor Day weekend in the historic village of Arden. Featuring handmade crafts, live music, food vendors, and family-friendly activities, the fair draws thousands of visitors and transforms the village into a bustling pedestrian zone for the day.
@@ -11,7 +12,7 @@ Because of the fair, the **Arden Swim Club parking lot will be closed to all veh
 
 We’ve arranged free parking at the YMCA Hanby Outdoor Center, located at:
 
-[📍 35 Chestnut St, Wilmington, DE 19810](https://maps.app.goo.gl/YKuv1keSnuZkxjjt5)
+📍 [35 Chestnut St, Wilmington, DE 19810](https://maps.app.goo.gl/YKuv1keSnuZkxjjt5)
 
 Shuttle buses will run every few minutes between the parking area and the Arden Swim Club throughout the day.
 

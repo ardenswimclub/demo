@@ -1,0 +1,72 @@
+---
+interface Props {
+  calendarData: string;
+  replacements?: object;
+}
+
+import { 
+  parseTSV, 
+  splitEntryByMonth, 
+  formatDateList,
+  formatTimeRange,
+} from '../utils/calendar';
+
+import type { Entry } from '../utils/calendar';
+
+const { calendarData, replacements } = Astro.props;
+
+
+// 🔧 Parse + transform
+const rawEntries = parseTSV(calendarData);
+const splitEntries = rawEntries.flatMap(splitEntryByMonth);
+
+// Group by month
+const calendar = new Map<string, Entry[]>();
+
+for (const entry of splitEntries) {
+  const date = new Date(entry.startDate);
+  const month = date.toLocaleDateString('en-US', { month: 'long' });
+
+  if (!calendar.has(month)) {
+    calendar.set(month, []);
+  }
+  calendar.get(month)?.push(entry);
+}
+
+function formatMemo(memo? : string | undefined) {  
+  return memo ? `<h4 class="font-semibold mt-2">${memo}</h4>` : '';
+}
+
+/**
+ * Parses a YYYY-MM-DD string into a Date interpreted as local time.
+ */
+ export function parseLocalDate(dateStr: string): Date {
+  const [year, month, day] = dateStr.split('-').map(Number);
+  return new Date(year, month - 1, day); // month is 0-based
+}
+
+---
+<div class="space-y-8">
+  {Array.from(calendar.entries()).map(([month, entries]) => (
+    <h1 class="text-5xl font-bold mb-2 text-center mb-5">{month}</h3>
+    <section class="bg-yellow-200">      
+      <div class="space-y-6">
+        {entries.map(entry => {
+          const start = new Date(entry.startDate);
+          const end = new Date(entry.endDate);
+          return (
+            <div class="grid grid-cols-2 gap-4 pb-4 bg-green-200">
+              <div>
+                <div class="text-xl" set:html={formatDateList(start, end)}></div>
+              </div>
+              <div class="">
+                <div class="text-3xl" set:html={formatTimeRange(entry.startTime, entry.endTime)}></div>
+                <div class="text-xl" set:html={formatMemo(entry.memo)}></div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  ))}
+</div>

@@ -1,0 +1,10 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const { title, menu } = (Astro.props.frontmatter || Astro.props);
+
+---
+
+<BaseLayout {menu} {title} markdown={true}>
+    <slot />
+</BaseLayout>

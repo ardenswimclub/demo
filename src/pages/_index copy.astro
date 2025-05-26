@@ -1,0 +1,22 @@
+---
+import '/src/styles/global.css' 
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import SectionCollection from "../components/SectionCollection.astro";
+import { sections , links } from '../data/sectionData';
+
+const pageTitle = 'Arden Swim Club';
+---
+
+
+<BaseLayout title={pageTitle}>
+	
+	<Header {links} {pageTitle}/>
+	<div class="h-screen flex flex-col">
+		<Hero />
+	</div>
+
+	<SectionCollection {sections} />
+</BaseLayout>
