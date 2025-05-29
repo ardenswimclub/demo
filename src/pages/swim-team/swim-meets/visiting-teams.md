@@ -9,7 +9,7 @@ menu: swim-meet
 
 ## Arrival: 
 
-Your team is welcome to arrive anytime after 4:45pm. Our team will begin 
+Your team is welcome to arrive anytime after 4:45pm.
 
 ## Parking:  
 

@@ -1,0 +1,36 @@
+---
+import { withBase } from "@/utils/url";
+import Container2 from "./container2.astro";
+import Navbar from "./navbar/navbar.astro";
+
+const { menu, subtitle } = Astro.props;
+
+import { menus } from '../data/menus';
+const menuItems = menus[menu];
+
+const headerColors = {
+    'main': '#faa', 
+    'swim-team': '#afa' , 
+    'swim-meet': '#aaf'
+};
+
+const headerColor = headerColors[menu];
+---
+
+<Container2 {headerColor}>
+    <!-- fixed top-0 w-full bg-white py-4 transition-all duration-300 z-50 -->
+    <!-- 
+    <header id="site-header" class="flex flex-col lg:flex-row justify-between items-center  py-2 "> 
+     -->
+    <header class="flex flex-col lg:flex-row justify-between items-center"> 
+        
+        <a href={withBase('/')} class="text-lg">
+            <span class="font-bold text-slate-800">Arden Swim Club</span>
+        </a>
+
+        <span data-today-hours=""></span>
+
+        <Navbar {menuItems} />
+
+    </header>
+  </Container2>

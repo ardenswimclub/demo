@@ -1,20 +1,16 @@
----
-layout: ../layouts/MarkdownLayout.astro
-title: Pool Rules
-menu: main
----
+[https://ardenswimclub.github.io/demo/pool-rules/](https://ardenswimclub.github.io/demo/pool-rules/)
 
-# **🏖 Arden Swim Club Pool Rules**
+## **🏖 Arden Swim Club Pool Rules**
 
 The following rules are established to protect the health and safety of Arden Swim Club members and guests, ensure the enjoyment of our facilities, and promote a positive standing in the community. Members are responsible for ensuring that their families and guests follow these rules.
 
-## **🏡 Club Values**
+### **🏡 Club Values**
 
 Arden Swim Club’s mission is to provide a **fun, relaxed, and family-friendly atmosphere**, with **safety as our top priority**. Parents and guardians must instruct their children to follow all rules and obey pool staff at all times. Serious or repeated violations may result in disciplinary action, including suspension of privileges or membership cancellation.
 
 ---
 
-## **📝 General Rules**
+### **📝 General Rules**
 
 * **All members must sign in at the entrance** before entering.
 
@@ -30,7 +26,7 @@ Arden Swim Club’s mission is to provide a **fun, relaxed, and family-friendly 
 
 ---
 
-## **👧 Unaccompanied Minors**
+### **👧 Unaccompanied Minors**
 
 * **Children 6 and under** must be accompanied by an adult (18+).
 
@@ -50,7 +46,7 @@ Arden Swim Club’s mission is to provide a **fun, relaxed, and family-friendly 
 
 ---
 
-## **🚷 Health, Safety & Conduct**
+### **🚷 Health, Safety & Conduct**
 
 * No one with communicable conditions or under the influence of drugs/alcohol may enter.
 
@@ -74,7 +70,7 @@ Arden Swim Club’s mission is to provide a **fun, relaxed, and family-friendly 
 
 ---
 
-## **🏊 Use of the Pool**
+### **🏊 Use of the Pool**
 
 * **Parents are responsible** for their children at all times.
 
@@ -98,7 +94,7 @@ Arden Swim Club’s mission is to provide a **fun, relaxed, and family-friendly 
 
 ---
 
-## **🍼 Baby Pool Rules**
+### **🍼 Baby Pool Rules**
 
 * No children over age 6
 
@@ -110,7 +106,7 @@ Arden Swim Club’s mission is to provide a **fun, relaxed, and family-friendly 
 
 ---
 
-## **⚠️ Disciplinary Policy**
+### **⚠️ Disciplinary Policy**
 
 1. **1st Offense**: Verbal warning
 
@@ -120,7 +116,7 @@ Arden Swim Club’s mission is to provide a **fun, relaxed, and family-friendly 
 
 ---
 
-## **🤿 Diving Board Rules**
+### **🤿 Diving Board Rules**
 
 * Must **swim one length \+ tread for 90 seconds** to use
 

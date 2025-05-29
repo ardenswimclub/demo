@@ -14,7 +14,7 @@ menu: swim-meet
 
 ## Swimmer Registration 🏊
 
-* All swimmers **must be registered** on the **Swimmingly** app to participate in swim meets.
+* All swimmers **must be registered** on the [Swimmingly](swimmingly) app to participate in swim meets.
 * **You must** declare whether their swimmer will be attending or not attending the meet
   * [How to declare your swimmer](swim-meets/declare-your-swimmer)
 * If your child cannot attend a meet, please notify the coach **at least 2 days in advance**.
@@ -36,7 +36,7 @@ menu: swim-meet
 
 * We ask that **at least one family member** volunteer at **each swim meet**. If you cannot volunteer at a meet, please arrange for another adult to attend and fulfill your obligation.
 
-* Volunteer roles include timing, concessions, line-up, ribbon writing, and more\!
+* [Volunteer roles](swim-meets/volunteer-positions) include timing, concessions, line-up, ribbon writing, and more\!
 
 ## Parent Responsibility 🚸
 
@@ -48,8 +48,7 @@ menu: swim-meet
 
 * Home meets are **big fundraising nights** for the team’s snack bar\!
 * Funds raised help support team activities and events throughout the year.
-* Please sign up to bring an item for home meets on:  
-   **June 17, June 24, and July 1**.
+* Please sign up to bring an item for home meets on: **June 17, June 24, and July 1**.
 * A **SignUpGenius** link will be sent out before each meet.
 
-**Thank you for baking, buying, and creating fun goodies to support our team\!**
+**🤗 Thank you for baking, buying, and creating fun goodies to support our team\!**

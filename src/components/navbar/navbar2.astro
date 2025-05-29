@@ -1,0 +1,86 @@
+---
+import { withBase } from "@/utils/url";
+
+const currentPath = Astro.url.pathname;
+
+// Helper: Check if a path is active
+const isActive = (href) => {
+    console.log({currentPath,href});
+    return currentPath.includes(href) ? 'border-b-2 border-yellow-400' : 'hover:border-b-2 hover:border-yellow-300';
+}
+
+// Define menus
+const mainNav = [
+  { href: '/hours', label: 'Hours' },
+  { href: '/membership', label: 'Membership' },
+  { href: '/swim-team', label: 'Swim Team' },
+  { href: '/pool-rules', label: 'Pool Rules' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/about', label: 'About' },
+];
+
+const swimTeamNav = [
+  { href: '/swim-team', label: 'General Info' },
+  { href: '/swim-team/registration', label: 'Registration' },
+  { href: '/swim-team/team-suit', label: 'Team Suit' },
+  { href: '/swim-team/swimmingly', label: 'Swimmingly' },
+  { href: '/swim-team/swim-meets', label: 'Swim Meets' },
+];
+
+const swimMeetsNav = [
+  { href: '/swim-team/swim-meets/important-info', label: 'Important Info' },
+  { href: '/swim-team/swim-meets/declare-swimmer', label: 'Declare Swimmer' },
+  { href: '/swim-team/swim-meets/volunteer-positions', label: 'Volunteer Positions' },
+  { href: '/swim-team/swim-meets/visiting-team', label: 'Visiting Team' },
+];
+---
+<header class="bg-blue-600 text-white">
+  <nav class="container mx-auto px-4 py-4 flex flex-col md:flex-row md:justify-between md:items-center">
+    
+    <!-- Logo + Hamburger -->
+    <div class="flex justify-between items-center w-full md:w-auto">
+      <!-- <div class="text-xl font-bold">Arden Swim Club</div> -->
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Main Nav -->
+    <ul id="main-menu" class="hidden md:flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 mt-4 md:mt-0">
+      {mainNav.map(item => (
+        <li><a href={withBase(item.href)} class={`block ${isActive(item.href)}`}>{item.label}</a></li>
+      ))}
+    </ul>
+
+    <!-- Subnav (conditionally shown) -->
+    {(currentPath.startsWith(withBase('/swim-team'))) && (
+        <div style="display: block;">
+            
+      <ul class="flex flex-wrap justify-center space-x-4 mt-2 text-sm">
+        {swimTeamNav.map(item => (
+          <li><a href={withBase(item.href)} class={`${isActive(item.href)}`}>{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+    )}
+
+    {(currentPath.startsWith('/swim-team/swim-meets')) && (
+      <ul class="flex flex-wrap justify-center space-x-4 mt-1 text-xs">
+        {swimMeetsNav.map(item => (
+          <li><a href={withBase(item.href)} class={`${isActive(item.href)}`}>{item.label}</a></li>
+        ))}
+      </ul>
+    )}
+  </nav>
+</header>
+
+<script is:inline>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('main-menu');
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>

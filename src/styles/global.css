@@ -17,7 +17,15 @@
   --accent-color: #facc15;
   --text-color: #111827;
   --border-radius: 0.5rem;
+
+  --hr-line-offset: 55%;
+  --hr-color: #756644;
+  --hr-text-color: rgb(251, 255, 0);
+  --hr-text-offset: 2ch;
+  --hr-thickness: 4px;
+  --background-primary: var(--background-color)
 }
+
 
 html {
   scroll-behavior: smooth;
@@ -47,5 +55,60 @@ body {
   }
 }
 
+/* 
+:root hr {
+  --hr-line-color: var(--hr-color);
+  display: grid;
+  place-items: center;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+      to right,
+      var(--hr-line-color),
+      var(--hr-line-color) calc(50% - var(--hr-text-offset)),
+      transparent calc(50% - var(--hr-text-offset)),
+      transparent calc(50% + var(--hr-text-offset)),
+      var(--hr-line-color) calc(50% + var(--hr-text-offset)),
+      var(--hr-line-color)
+  );
+}
+
+:root hr::after {
+  content: "★";
+  font-weight: bold;
+  color: var(--hr-text-color);
+      position: absolute;
+      translate: 0 calc(var(--hr-thickness) / -2);
+} */
+/*
+** Customised symbolic hr line in Preview modded from TriDiamond's post (https://forum.obsidian.md/t/meta-post-common-css-hacks/1978/223)
+*/
+ hr {
+  margin-block-start: 2em;
+  margin-block-end: 2em;
+  border: none;
+  height: 1px;
+  background-image: linear-gradient(to right, var(--background-primary), DarkOliveGreen, green, yellowgreen, yellowgreen, green, DarkOliveGreen,var(--background-primary));
+}
+hr::after  {
+  content: '🌸';
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  transform-origin: 50% 50%;
+  padding: none;
+  background-color:transparent;
+}
+
+hr::before {
+content: '🍀🍀';
+display: inline-block;
+position: absolute;
+left: 50%;
+transform: translate(-50%, -50%)rotate(160deg);
+transform-origin: 50% 50%;
+padding: none;
+background-color: var(--background-primary);
+}
 
 @import './typography.css';

@@ -4,6 +4,8 @@ title: Swimmingly
 menu: swim-team
 ---
 
+# Swimmingly
+
 We use [Swimmingly](https://swimmingly.app/) to help run swim meets more smoothly and efficiently.
 
 ## Here’s how it works:

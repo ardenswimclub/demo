@@ -1,9 +1,10 @@
 ---
-const { class: className } = Astro.props;
+const { class: className, headerColor } = Astro.props;
 // class="p-4 md:shadow-xl/30 shadow-lg/20 z-10 fixed top-0 w-full transition-all duration-300 z-50"> 
 ---
 
-<div id="site-header" style="background-color: var(--header-color);" 
+<!-- <div id="site-header" style="background-color: var(--header-color);"  -->
+<div id="site-header" style={`background-color: ${headerColor}`}
   class="md:p-2 z-10 w-full relative">
   <div class:list={["max-w-(--breakpoint-xl) mx-auto px-5", className]}>
     <slot />

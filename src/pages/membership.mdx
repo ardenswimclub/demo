@@ -3,31 +3,54 @@ layout: ../layouts/MarkdownLayout.astro
 menu: main
 id: 'membership'
 title: 'Memberships Information'
+
 ---
-
-
+ 
+import HowToJoin from './how-to-join.mdx';
+import { withBase } from '@/utils/url';
 import Link from '@/components/ui/link.astro';
 
-# Memberships
 
-**Memberships are available for individuals, couples, and families of all sizes.**  
-We also offer **discounts** for eligible members — see below for details.
+# 🏊 Arden Swim Club Membership
 
-### Bonds
+Memberships are available for **individuals, couples, and families of all sizes**.
+
+We also offer **discounts for eligible members** — see below for details.
+
+{/* <Link href="how-to-join">🤔 Registraion Instructions</Link> */}
+
+<HowToJoin />
+
+## 🔐 Bonds
 
 Bonds are **no longer required** and **no longer sold** for new members.  
-However, if you already hold a bond in good standing, your **bondholder discount will continue to be honored**.
+
+If you already hold a bond in good standing, your bondholder discount **will still be honored**.
+
+## 💳 View Membership Options
 
 For the most up-to-date membership pricing and options, visit our **secure membership portal**:
 
-<Link href="https://www.esoftplanner.com/v3/planner/memberships.php?access=0dG81LSVxNmo65bCzW57uZyIpg==">👉 View Membership Options</Link>
+<Link href="https://www.esoftplanner.com/v3/planner/memberships.php?access=0dG81LSVxNmo65bCzW57uZyIpg==" 
+    blank={true} >👉 View Membership Options</Link>
 
 
-### Day Passes
+## 🚫 Day Passes
 
-Due to insurance policy changes, **day pass walk-ups are no longer available**.
+Due to changes in our insurance policy, **walk-up day passes are no longer available**.
 
-### Guest Policy
+## ❗ Final Notes
+
+Your membership **must be completed online** in order for you to enter the pool. 
+
+{/* Our lifeguards cannot check you in if you have not registered in the system. */}
+
+If your registration is not finalized, our lifeguards will not be able to check you in.
+
+Have questions or need help? <a href={withBase('contact')}>Contact us</a> — we're happy to assist!
+{/* 
+<strike>
+## Guest Policy
 
 Members are welcome to bring guests!  
 Before entering the pool area, **members must sign in their guests at the entrance**.  
@@ -35,5 +58,7 @@ All guests must be **accompanied by a current Arden Swim Club member**.
 
 - **Guest fee:** $5 per guest, ages 3 and up  
 - Each local individual may be signed in as a guest **up to six times per summer season**
+
+</strike> */}
 
 We look forward to seeing you at the pool! 💦

@@ -4,6 +4,6 @@ import { menu as swimMeetMenu }  from './swim-meet-menu';
 
 export const menus = { 
     'main': mainMenu, 
-    'swim-team': swimTeamMenu, 
-    'swim-meet': swimMeetMenu 
+    'swim-meet': swimMeetMenu ,
+    'swim-team': swimTeamMenu , 
 };
