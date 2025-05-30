@@ -3,21 +3,24 @@ import { withBase } from "@/utils/url";
 import Container2 from "./container2.astro";
 import Navbar from "./navbar/navbar.astro";
 
-const { menu, subtitle } = Astro.props;
+const { menu , subtitle } = Astro.props;
+console.log(menu);
 
 import { menus } from '../data/menus';
+
 const menuItems = menus[menu];
 
-const headerColors = {
-    'main': '#faa', 
-    'swim-team': '#afa' , 
-    'swim-meet': '#aaf'
+console.log(menuItems);
+
+const menusToShow = {
+    'main': true,
+    'swim-team': (['swim-team','swim-meet'].includes(menu)), 
+    'swim-meet': 'swim-meet' === menu
 };
 
-const headerColor = headerColors[menu];
 ---
 
-<Container2 {headerColor}>
+<Container2 headerColor="var(--header-color)" >
     <!-- fixed top-0 w-full bg-white py-4 transition-all duration-300 z-50 -->
     <!-- 
     <header id="site-header" class="flex flex-col lg:flex-row justify-between items-center  py-2 "> 
@@ -28,9 +31,23 @@ const headerColor = headerColors[menu];
             <span class="font-bold text-slate-800">Arden Swim Club</span>
         </a>
 
-        <span data-today-hours=""></span>
+        <span data-today-hours></span>
 
-        <Navbar {menuItems} />
+        <Navbar menuItems={menus['main']} />        
 
     </header>
   </Container2>
+
+  
+  <!-- sub menus -->
+ { menusToShow['swim-team'] ? (
+  <Container2 headerColor="white" class="flex flex-col lg:flex-row items-center">
+    <b class="border-b-3 mr-4 border-transparent">Swim Team</b>
+    <Navbar menuItems={menus['swim-team']} />
+  </Container2>) : '' }
+
+{ menusToShow['swim-meet'] ? (
+<Container2 headerColor="#eee" class="flex flex-col lg:flex-row items-center">
+  <b class="border-b-3 mr-4 border-transparent">Swim Meets</b>
+  <Navbar menuItems={menus['swim-meet']} />
+</Container2>) : '' }

@@ -14,23 +14,6 @@ function mapChildrenPaths(children) {
 }
 ---
 
-<div class="flex w-full lg:w-auto items-center justify-between">
-  <ul class="flex flex-col lg:flex-row lg:gap-3">
-  {menuItems.map((item,index) => (
-    <>
-      <li>
-        <a
-          href={withBase(item.path)}
-          class="flex lg:px-1 my-2 items-center text-gray-600 hover:text-gray-900 
-            border-b-3 border-b-transparent hover:border-yellow-400">
-          <span> {item.title}</span>                      
-        </a>
-      </li>
-    </>
-  ))}
-  </ul>
-</div>
-<!-- 
 <Astronav>    
   <div class="flex w-full lg:w-auto items-center justify-between">
     <div class="block lg:hidden">
@@ -66,4 +49,4 @@ function mapChildrenPaths(children) {
 
   </MenuItems>
 
-</Astronav> -->
+</Astronav>
