@@ -4,5 +4,9 @@ export function withBase(path: string): string {
     if(path.includes('://'))
         return path;
     const base = import.meta.env.BASE_URL || '/';
-    return `${base.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
+    const newPath = `${base.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
+    if(path.includes('.pdf'))
+        console.log({base,path,newPath});
+    return newPath
+
 }

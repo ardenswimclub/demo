@@ -109,6 +109,6 @@ export function getHoursForToday() {
   const today = new Date().toISOString().split('T')[0];
   const hours = calendarHours[today];  
   if(hours)
-    return hours;
-  else 'Closed';
+    return ['Open today <b class="mr-1">', hours, '</b><span class="face"></span>'].join('');
+  else 'Closed Today 😭';
 }

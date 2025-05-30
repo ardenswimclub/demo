@@ -4,6 +4,8 @@ title: Declare Your Swimmer
 menu: swim-meet
 ---
 
+# Declare Your Swimmer
+
 ## What Does It Mean to Declare Your Swimmer as "Attending" or "Not Attending"?
 
 Before each swim meet, parents are asked to declare whether their swimmer will be attending or not attending the meet. This is done through the Swimmingly app or website.

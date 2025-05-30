@@ -39,5 +39,4 @@ Arden Swim Club<br/>
 2126 The Highway<br/>
 Wilmington, DE 19810<br/>
 
-### Checks should be made payable to
-
+### Checks should be made payable to <span class="font-mono">The Swimming Gild of Arden Inc</span>

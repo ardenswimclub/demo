@@ -111,4 +111,23 @@ padding: none;
 background-color: var(--background-primary);
 }
 
+.face:hover::after {
+  content: "🥸"
+}
+
+.face::after{
+  content: "😎"
+}
+
+.face:active::after {
+  content: "😵‍💫"
+}
+
+.prose h1, h2 {
+  margin-bottom: 0.25em;
+  margin-top: 0.25em;
+}
+
+
+
 @import './typography.css';

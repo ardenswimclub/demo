@@ -4,7 +4,7 @@ title: Swim Team - General Info
 menu: swim-team
 ---
 
-## Welcome to Summer Swim with the Arden Swim Team\!
+# Welcome to Summer Swim with the Arden Swim Team\!
 
 The Arden Swim Club offers an exciting summer swim team and is a proud member of the North Brandywine Swim League (NBSL). Our team provides a fun, competitive, and supportive environment for all children of our members. Our goal is to improve physical health, build positive self-esteem, and foster dedication and teamwork in every swimmer.
 

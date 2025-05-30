@@ -3,7 +3,7 @@ layout: ../../../layouts/MarkdownLayout.astro
 title: Visiting Teams
 menu: swim-meet
 ---
-# Information for visiting swim teams
+# Information for Visiting Swim Teams
 
 **We are excited to welcome your swimmers and families to Arden\!\!**
 

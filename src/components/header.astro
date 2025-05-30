@@ -4,13 +4,10 @@ import Container2 from "./container2.astro";
 import Navbar from "./navbar/navbar.astro";
 
 const { menu , subtitle } = Astro.props;
-console.log(menu);
 
 import { menus } from '../data/menus';
 
 const menuItems = menus[menu];
-
-console.log(menuItems);
 
 const menusToShow = {
     'main': true,
