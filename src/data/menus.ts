@@ -15,27 +15,27 @@ export const menus = {
     'swim-team': swimTeamMenu , 
 };
 
-function injectChildren(key, childMenu, targetMenu) {    
+// function injectChildren(key, childMenu, targetMenu) {    
     
-    return {
-        heading: targetMenu.heading,
-        items: targetMenu.items.map(item => item.path.includes(key) ?
-        {
-            title: item.title,
-            path: '#',
-            children: childMenu
-        } : item)
-    };
-}
+//     return {
+//         heading: targetMenu.heading,
+//         items: targetMenu.items.map(item => item.path.includes(key) ?
+//         {
+//             title: item.title,
+//             path: '#',
+//             children: childMenu
+//         } : item)
+//     };
+// }
 
-const swimTeamMenu2 = injectChildren('swim-meets', swimMeetMenu, swimTeamMenu);
-const mainMenu2 = injectChildren('swim-team', swimTeamMenu2, mainMenu);
+// const swimTeamMenu2 = injectChildren('swim-meets', swimMeetMenu, swimTeamMenu);
+// const mainMenu2 = injectChildren('swim-team', swimTeamMenu2, mainMenu);
 
-interface s {
-    heading: string | undefined,
-    items: menuItem[]
-}
+// interface s {
+//     heading: string | undefined,
+//     items: menuItem[]
+// }
 
-export const accordionMenu = mainMenu2;
+// export const accordionMenu = mainMenu2;
 
 //console.log(JSON.stringify(accordionMenu,null, 3));

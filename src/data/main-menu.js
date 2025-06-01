@@ -5,7 +5,11 @@ export const menu  = {
     {
       title: "Hours",
       path: "/hours",
-    },    
+    },
+    {
+      title: "Events",
+      path: "/events",
+    },
     {
       title: "Membership",
       path: "/membership",

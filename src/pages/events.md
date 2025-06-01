@@ -5,9 +5,13 @@ menu: main
 ---
 
 # Events
+<br/>
 
-## 🦩 Raft Night
+## 🦩 Raft Night: Wednesday 6-9pm
+### June 11th - August 20th
 
 Join us every Wednesday evening for Raft Night! Bring your favorite inflatable floats and enjoy a relaxed, family-friendly atmosphere as we turn the pool into a floating paradise.
 
-The pool stays open until 8:00 pm, and if there's enough interest, we’ll keep the fun going until 9:00 pm — so bring your friends, your floats, and your summer spirit!
+On Raft Night, the pool stays open until 9pm<sup>*</sup> for a bonus hour of fun.
+
+<sup>*Pool may close at 8pm if all guests have left for the evening.<sup>
