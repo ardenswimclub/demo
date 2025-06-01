@@ -9,13 +9,14 @@ import "@/styles/global.css";
 //import { undefined } from "astro:schema";
 import { withBase } from "@/utils/url";
 import Header from "@/components/header.astro";
+import Breakpoints from "@/components/breakpoints.astro";
 
 
 export interface Props {
   title: string;
   markdown?: boolean | undefined;
   noContainer?: boolean | undefined;
-  menu: string;
+  menuKey: string;
   subtitle?: string | undefined;
 }
 
@@ -26,7 +27,7 @@ const resolvedImageWithDomain = new URL(
   Astro.site
 ).toString();
 
-const { title, markdown, noContainer, menu, subtitle } = Astro.props;
+const { title, markdown, noContainer, menuKey, subtitle } = Astro.props;
 
 
 const makeTitle = title
@@ -77,13 +78,15 @@ const makeTitle = title
     
   </head>
   <body>
-    <Header {subtitle} {menu} />
+    <Header {subtitle} {menuKey} />
     <!-- container moved to child layouts -->
-    <Container {noContainer} class={markdown ? 'prose prose-tight pt-4 pb-8 md:pt-4 md:pb-24' : ''}>
+    <Container {noContainer} 
+      class={markdown ? 'prose prose-tightSmall sm:prose-tight  pt-4 pb-8 md:pt-4 md:pb-24' : ''}>
       
     <slot />
     </Container>
     <Footer />
+    <Breakpoints />
     <style is:global>
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */

@@ -2,7 +2,7 @@
 
 @tailwind utilities;
 @plugin '@tailwindcss/typography';
-@config "./tailwind.config.js";
+@config "../../tailwind.config.js";
 
 @theme {
   --font-sans:

@@ -5,14 +5,14 @@ import BaseLayout from "./BaseLayout.astro";
 export interface Props {
   title: string;
   noContainer?: boolean;
-  menu: string;
+  menuKey: string;
 }
 
-const { title, noContainer, menu } = Astro.props;
+const { title, noContainer, menuKey } = Astro.props;
 
 ---
 
 
-<BaseLayout {menu} {title} {noContainer}>
+<BaseLayout {menuKey} {title} {noContainer}>
     <slot />
 </BaseLayout>
