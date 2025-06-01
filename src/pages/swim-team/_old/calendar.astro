@@ -1,13 +1,13 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
 import htmlContent from  './June2025SwimTeamCalendar.html?raw';
-import { withBase } from '../../utils/url';
+import { withBase } from '@/utils/url';
 import Container from '@/components/container.astro';
 
-const menu = 'swim-team';
+const menuKey = 'swim-team';
 ---
 
-<Layout title="2025 Swim Team Calendar" {menu}>
+<Layout title="2025 Swim Team Calendar" {menuKey}>
     <Container >
     <div set:html={htmlContent} ></div>
     </Container>    

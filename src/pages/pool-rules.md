@@ -98,6 +98,7 @@ Arden Swim Club’s mission is to provide a **fun, relaxed, and family-friendly 
 
 ---
 
+<a id="baby-pool"></a>
 ## **🍼 Baby Pool Rules**
 
 * No children over age 6

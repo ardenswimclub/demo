@@ -5,13 +5,13 @@ import Features from "@/components/features.astro";
 import Hero from "@/components/hero.astro";
 // import Logos from "@/components/logos.astro";
 import Layout from "@/layouts/Layout.astro";
-import background from '../assets/pool-watercolor.png';
+import background from '@/assets/pool-watercolor.png';
 
-const menu = 'main';
+const menuKey = 'main';
 //<!-- <section class="flex flex-col justify-start  w-full bg-no-repeat bg-cover bg-bottom z-0 relative shadow-xl/20"  -->
 ---
 
-<Layout title="Home" noContainer={true} {menu}>
+<Layout title="Home" noContainer={true} {menuKey}>
   <!-- <Container> -->
     <section class="h-screen flex flex-col justify-start 
        w-full bg-no-repeat bg-cover bg-bottom" 

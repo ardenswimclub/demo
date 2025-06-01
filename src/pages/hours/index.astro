@@ -1,8 +1,8 @@
 ---
-import Calendar from '../components/calendar.astro';
-import Layout from '../layouts/Layout.astro';
-import hoursText from  '../data/hours.txt?raw';
-import { withBase } from '../utils/url';
+import Calendar from '@/components/calendar.astro';
+import Layout from '@/layouts/Layout.astro';
+import hoursText from  '@/data/hours.txt?raw';
+import { withBase } from '@/utils/url';
 import Container from '@/components/container.astro';
 
 import ClosedForSwimMeets from './closed-for-swim-meets.mdx';
@@ -42,7 +42,7 @@ const menu = 'main';
     <Container >
     <Calendar calendarData={calendarData} />
     <div class="bg-white border-1 border-black p-2 
-        prose prose-tightSmall  pt-4 pb-8 md:pt-4 md:pb-24">
+        prose prose-tightSmall  pt-4 pb-8 md:pt-4 md:pb-24 max-w-full">
         <ClosedForSwimMeets />
     </div>
     </Container>

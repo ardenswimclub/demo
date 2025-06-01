@@ -1,20 +1,31 @@
-import { menu as mainMenu }  from './main-menu';
-import { menu as swimTeamMenu }  from './swim-team-menu';
-import { menu as swimMeetMenu }  from './swim-meet-menu';
+
+import { menu as mainMenu, contact, footerMain }  from './main-menu.ts';
+import { menu as swimTeamMenu }  from './swim-team-menu.ts';
+import { menu as swimMeetMenu }  from './swim-meet-menu.ts';
 import { array } from 'astro:schema';
 
 interface menuItem {
     title: string | undefined,
     path: string,
-    children: menuItem[]
+    children?: menuItem[] | undefined
 };
 
+export interface menuT {
+    heading: string
+    items: menuItem[]    
+}
 export const menus = { 
     'main': mainMenu, 
     'swim-meet': swimMeetMenu ,
     'swim-team': swimTeamMenu , 
 };
 
+export const footerMenus : menuT[] = [
+    footerMain, 
+    swimMeetMenu ,
+    swimTeamMenu , 
+    contact
+];
 // function injectChildren(key, childMenu, targetMenu) {    
     
 //     return {
