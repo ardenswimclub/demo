@@ -1,15 +1,27 @@
 import type { menuT } from '@/data/menus.ts';
 
 export const contact : menuT = {
-  heading: 'More',
+  heading: 'Learn more',
   items: [
     {
-      title: "Contact Us",
-      path: "/contact",
+      title: "Donate",
+      path: "/donate",
     },
     {
       title: "About Us",
       path: "/about",
+    },
+    {
+      title: "Contact Us",
+      path: "/contact",
+    },    
+    {
+      title: "Facebook",
+      path: "https://www.facebook.com/ArdenSwimClub/",
+    },
+    {
+      title: "Venmo",
+      path: "https://venmo.com/Arden-Swim?txn=pay",
     }
   ]
 }
@@ -34,8 +46,8 @@ export const menu : menuT = {
       path: '/swim-team'
     },
     {
-      title: "Food",
-      path: "/food",
+      title: "Eats",
+      path: "/eats",
     },
     {
       title: "Pool Rules",
