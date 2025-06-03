@@ -133,6 +133,7 @@ img.emoji {
   height: 1.6em;
   vertical-align: middle;
   display: inline;
+  margin: 0;
 }
 
 @import './typography.css';
