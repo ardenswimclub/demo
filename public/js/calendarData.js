@@ -110,5 +110,5 @@ export function getHoursForToday() {
   const hours = calendarHours[today];  
   if(hours)
     return ['Hours: <b class="mr-1">', hours, '</b><span class="face"></span>'].join('');
-  else 'Closed Today 😭';
+  else 'Closed Today <span class="emoji">😭</span>';
 }

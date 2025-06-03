@@ -30,6 +30,9 @@ const tightProseStyles = (theme) => ({
 module.exports = {
   theme: {
     extend: {
+      fontFamily: {
+        emoji: ['"Twemoji"', 'sans-serif'],
+      },
       typography: (theme) => ({
         tight: {
           css: {

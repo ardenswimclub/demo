@@ -1,11 +1,8 @@
 ---
-import { Picture } from "astro:assets";
-import heroImage from "@/assets/arden-swim-club-logo.png";
-//import heroImage from "@/assets/hero.png";
+import { Image } from "astro:assets";
+import heroImage from "@/assets/images/landing-page/arden-swim-club-logo.png";
 
 import Link from "@/components/ui/link.astro";
-import { Icon } from "astro-icon/components";
-import { withBase } from "@/utils/url";
 ---
 
 <main
@@ -16,7 +13,7 @@ import { withBase } from "@/utils/url";
       bg-gray-300/40 rounded">
   
   <div class="py-6 md:order-1 hidden md:block">
-    <Picture
+    <Image
       src={heroImage}
       alt="The Arden Swim Club logo"
       height=300

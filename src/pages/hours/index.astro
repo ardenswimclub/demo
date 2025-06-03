@@ -6,12 +6,13 @@ import { withBase } from '@/utils/url';
 import Container from '@/components/container.astro';
 
 import ClosedForSwimMeets from './closed-for-swim-meets.mdx';
+import E from '@/components/E.astro';
 
 
 const href=withBase('arden-fair-parking');
 
 const parking = `
-<h1>⚠️ POOL PARKING LOT CLOSED ⚠️</h1>
+<h1><span class="emoji">⚠️</span> POOL PARKING LOT CLOSED <span class="emoji">⚠️</span></h1>
 <a href="${href}" class="underline text-lime-600 hover:text-lime-700">Shuttle information</a>`.replaceAll('\n','');
 
 const whyClosed = `
@@ -25,7 +26,7 @@ closed all day was the most practical choice.</p>
 `.replaceAll('\n','');
 
 const raftNight = `
-<p>🦩<a href="${withBase('/events#raft-night')}" class="underline text-lime-600 hover:text-lime-700">Raft Night</a> Wednesdays 6-9pm
+<p><span class="emoji">🦩</span><a href="${withBase('/events#raft-night')}" class="underline text-lime-600 hover:text-lime-700">Raft Night</a> Wednesdays 6-9pm
 </p>
 
 `.replaceAll('\n','');
@@ -39,7 +40,7 @@ const menu = 'main';
 ---
 
 <Layout title="Hours" menuKey="main">
-    <Container >
+    <Container class="mb-10" >
     <Calendar calendarData={calendarData} />
     <div class="bg-white border-1 border-black p-2 
         prose prose-tightSmall  pt-4 pb-8 md:pt-4 md:pb-24 max-w-full">

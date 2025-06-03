@@ -5,13 +5,14 @@ import { menu as swimMeetMenu }  from './swim-meet-menu.ts';
 import { array } from 'astro:schema';
 
 interface menuItem {
-    title: string | undefined,
-    path: string,
+    title: string | undefined
+    path: string
     children?: menuItem[] | undefined
 };
 
 export interface menuT {
     heading: string
+    key: string
     items: menuItem[]    
 }
 export const menus = { 

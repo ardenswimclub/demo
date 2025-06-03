@@ -97,7 +97,7 @@ hr::after  {
   transform: translate(-50%, -50%); 
   transform-origin: 50% 50%;
   padding: none;
-  background-color:transparent;
+  background-color:transparent;  
 }
 
 hr::before {
@@ -128,6 +128,11 @@ background-color: var(--background-primary);
   margin-top: 0.25em;
 }
 
-
+img.emoji {
+  width: 1.6em;
+  height: 1.6em;
+  vertical-align: middle;
+  display: inline;
+}
 
 @import './typography.css';

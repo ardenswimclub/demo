@@ -1,6 +1,7 @@
 
 export const menu  = {
   heading: 'Swim Meets',
+  key: 'swim-meet',
   items: [
   { title: "Important Info", path: "/swim-team/swim-meets"},
   { title: "Declare Swimmer", path: "/swim-team/swim-meets/declare-your-swimmer" },

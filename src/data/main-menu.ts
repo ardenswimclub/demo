@@ -1,7 +1,45 @@
 import type { menuT } from '@/data/menus.ts';
 
+
+export const menu : menuT = {
+  heading: 'Main',
+  key: 'main',
+  items: [
+    {
+      title: "Hours",
+      path: "/hours",
+    },
+    {
+      title: "Events",
+      path: "/events",
+    },
+    {
+      title: "Membership",
+      path: "/membership",
+    },
+    {
+      title: "Swim Team",
+      path: '/swim-team'
+    },  
+    {
+      title: "Lessons",
+      path: "/swim-lessons",
+    },
+    {
+      title: "Pool Rules",
+      path: "/pool-rules",
+    },
+    {
+      title: "Eats",
+      path: "/eats",
+    }
+  ]
+};
+
+
 export const contact : menuT = {
   heading: 'Learn more',
+  key: 'contact',
   items: [
     {
       title: "Donate",
@@ -26,37 +64,8 @@ export const contact : menuT = {
   ]
 }
 
-export const menu : menuT = {
-  heading: 'Main',
-  items: [
-    {
-      title: "Hours",
-      path: "/hours",
-    },
-    {
-      title: "Events",
-      path: "/events",
-    },
-    {
-      title: "Membership",
-      path: "/membership",
-    },
-    {
-      title: "Swim Team",
-      path: '/swim-team'
-    },
-    {
-      title: "Eats",
-      path: "/eats",
-    },
-    {
-      title: "Pool Rules",
-      path: "/pool-rules",
-    }
-  ]
-};
-
 export const footerMain : menuT = {
   heading: menu.heading,
+  key: 'footer',
   items: menu.items.filter(o=>o.path != '/swim-team')
 }

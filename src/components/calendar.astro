@@ -15,7 +15,7 @@ import type { Entry } from "../utils/calendar";
 
 const { calendarData, replacements } = Astro.props;
 
-// 🔧 Parse + transform
+// Parse + transform
 const rawEntries = parseTSV(calendarData);
 const splitEntries = rawEntries.flatMap(splitEntryByMonth);
 
@@ -52,7 +52,7 @@ const debug = false;
   {
     Array.from(calendar.entries()).map(([month, entries]) => (
       <section class="bg-white my-8 pt-3">
-        <h1 class="text-5xl font-bold text-center mb-3">{month}</h1>
+        <h1 class="text-3xl sm:text-5xl font-bold text-center mb-3">{month}</h1>
         <div class="space-y-3 px-3 pt-3 border-1 border-black">
           {entries.map((entry) => {
             const start = new Date(entry.startDate);
@@ -61,14 +61,14 @@ const debug = false;
               // <div class="grid grid-cols-2 gap-4 pb-4 bg-green-200">
               <div class="grid grid-cols-2 gap-3 pb-3 border-b-1 border-gray-400">
                 <div>
-                  <div class="text-xl" set:html={formatDateList(start, end)} />
+                  <div class="text-lg sm:text-xl" set:html={formatDateList(start, end)} />
                 </div>
                 <div class="">
                   <div
-                    class="text-3xl"
+                    class="text-xl sm:text-3xl font-bold"
                     set:html={formatTimeRange(entry.startTime, entry.endTime)}
                   />
-                  <div class="text-xl" set:html={formatMemo(entry.memo)} />
+                  <div class="text-lg sm:text-xl" set:html={formatMemo(entry.memo)} />
                 </div>
               </div>
             );
