@@ -13,6 +13,7 @@ interface menuItem {
 export interface menuT {
     heading: string
     key: string
+    path: string
     items: menuItem[]    
 }
 export const menus = { 

@@ -1,6 +1,7 @@
 ---
 import Container from "@/components/container.astro";
 import BaseLayout from "./BaseLayout.astro";
+import "astro-breadcrumbs/breadcrumbs.css";
 
 export interface Props {
   title: string;
@@ -11,7 +12,6 @@ export interface Props {
 const { title, noContainer, menuKey } = Astro.props;
 
 ---
-
 
 <BaseLayout {menuKey} {title} {noContainer}>
     <slot />

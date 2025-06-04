@@ -28,7 +28,7 @@ const heading = menu.heading;
   ">
   { heading ? (
     <li class="border-b-3 border-transparent font-bold">
-      <a href={withBase('/')}>{heading}</a>
+      <a href={withBase(menu.path)}>{heading}</a>
     </li>
     ) : ( "" )
   }

@@ -1,6 +1,11 @@
 
 export function withBase(path: string): string {
 
+    const base = import.meta.env.BASE_URL || '/';
+
+    if(!path)
+        return base;
+
     // reject non-local paths        
     if(path.includes('://'))
         return path;
@@ -9,7 +14,6 @@ export function withBase(path: string): string {
     if(path.startsWith('#'))
         return path;
 
-    const base = import.meta.env.BASE_URL || '/';
     const newPath = `${base.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
 
 

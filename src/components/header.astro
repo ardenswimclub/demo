@@ -7,6 +7,7 @@ const { menuKey, subtitle } = Astro.props;
 
 import { menus } from "../data/menus.ts";
 import Accordion from "./navbar/accordion.astro";
+import Breadcrumbs from "./navbar/breadcrumbs.astro";
 
 const menusToShow = {
   main: true,
@@ -72,3 +73,5 @@ const menusToShow = {
   <Accordion menu={menus["swim-team"]} menuKey={menuKey} id="2" />
   <Accordion menu={menus["swim-meet"]} menuKey={menuKey} id="3" />
 </div>
+
+<Breadcrumbs {menus} menuKey={menuKey} />

@@ -1,9 +1,9 @@
 import type { menuT } from '@/data/menus.ts';
 
-
 export const menu : menuT = {
   heading: 'Main',
   key: 'main',
+  path: '/',
   items: [
     {
       title: "Hours",
