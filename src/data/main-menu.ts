@@ -40,6 +40,7 @@ export const menu : menuT = {
 export const contact : menuT = {
   heading: 'Learn more',
   key: 'contact',
+  path: '',
   items: [
     {
       title: "Donate",
@@ -65,6 +66,7 @@ export const contact : menuT = {
 }
 
 export const footerMain : menuT = {
+  path: '',
   heading: menu.heading,
   key: 'footer',
   items: menu.items.filter(o=>o.path != '/swim-team')

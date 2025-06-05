@@ -1,4 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}', // include all source files
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
 
 const tightProseStyles = (theme) => ({
   'li > ul': {
