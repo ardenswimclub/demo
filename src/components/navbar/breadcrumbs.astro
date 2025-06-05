@@ -31,7 +31,7 @@ if (menuKey != 'main')
 //if(crumbs.length == 1)
   console.log({crumbs, pathSansBase, base, currentPath, menuKey});
 ---
-{() => ( crumbs.length == 1 ? <div>No crumbs</div> : 
+{() => ( crumbs.length == 1 ? null : 
   <ul class="flex flex-wrap sm:hidden
     items-center justify-left items-center
     ml-2 mt-1">
