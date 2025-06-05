@@ -9,10 +9,9 @@ const base = import.meta.env.BASE_URL || '/';
 
 let pathSansBase = currentPath.substring(base.length);
 
-// if(pathSansBase.startsWith('/'))
-//   pathSansBase=pathSansBase.substring(1);
-
-const pieces = pathSansBase.split('/');
+// this happen when building, but not in dev
+if(pathSansBase.endsWith('/'))
+  pathSansBase = pathSansBase.substring(0,pathSansBase.length-1);
 
 const menu : menuT = menus[menuKey];
 const mainMenu = menus['main'];
@@ -29,9 +28,10 @@ if(t != null)
 if (menuKey != 'main')
   crumbs.unshift(mainCrumb);
 
-//console.log({crumbs, pathSansBase, base, currentPath, pieces, menuKey});
+//if(crumbs.length == 1)
+  console.log({crumbs, pathSansBase, base, currentPath, menuKey});
 ---
-{() => ( crumbs.length == 1 ? null : 
+{() => ( crumbs.length == 1 ? <div>No crumbs</div> : 
   <ul class="flex flex-wrap sm:hidden
     items-center justify-left items-center
     ml-2 mt-1">

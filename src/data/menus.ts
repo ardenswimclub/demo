@@ -2,7 +2,6 @@
 import { menu as mainMenu, contact, footerMain }  from './main-menu.ts';
 import { menu as swimTeamMenu }  from './swim-team-menu.ts';
 import { menu as swimMeetMenu }  from './swim-meet-menu.ts';
-import { array } from 'astro:schema';
 
 interface menuItem {
     title: string | undefined

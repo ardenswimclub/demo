@@ -9,7 +9,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "build:calendar": "node src/scripts/build-calendar.js",
-    "build": "astro build && node src/scripts/replace-emojis.js"
+    "build:emoji": "node src/scripts/replace-emojis.js",
+    "build:all": "astro build",
+    "build": "node src/scripts/build-calendar.js && node src/scripts/replace-emojis.js && astro build"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
